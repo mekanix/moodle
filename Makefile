@@ -12,4 +12,3 @@ post_setup:
 	@echo "/usr/cbsd/jails-data/moodle-data/usr/local/www/moodle /usr/local/www/moodle nullfs rw 0 0" >>services/nginx/templates/fstab
 
 .include <${REGGAE_PATH}/mk/project.mk>
-
