@@ -1,11 +1,11 @@
 REGGAE_PATH = /usr/local/share/reggae
-SERVICES = letsencrypt https://github.com/mekanix/jail-letsencrypt \
-	   postgresql https://github.com/mekanix/jail-postgresql \
-	   moodle https://github.com/mekanix/jail-moodle \
-	   nginx https://github.com/mekanix/jail-nginx
+USE = letsencrypt postgresql nginx
+SERVICES = moodle https://github.com/mekanix/jail-moodle
+
+.include <${REGGAE_PATH}/mk/use.mk>
 
 post_setup:
-.for service url in ${SERVICES}
+.for service url in ${ALL_SERVICES}
 	@echo "FQDN = ${FQDN}" >>services/${service}/project.mk
 .endfor
 	@echo "/usr/cbsd/jails-data/letsencrypt-data/usr/local/etc/dehydrated/certs /etc/certs nullfs rw 0 0" >services/nginx/templates/fstab
